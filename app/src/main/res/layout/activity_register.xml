@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!--
+    Pantalla de registro de usuarios.
+    Permite ingresar un nombre de usuario y una contraseña
+    para almacenarlos de forma segura mediante hash SHA-256
+    y EncryptedSharedPreferences.
+-->
+
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -7,6 +15,7 @@
     android:layout_height="match_parent"
     tools:context=".RegisterActivity">
 
+    <!-- Título de la pantalla de registro -->
     <TextView
         android:id="@+id/tvTitle"
         android:layout_width="wrap_content"
@@ -19,6 +28,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="40dp"/>
 
+    <!-- Campo para ingresar el nombre de usuario -->
     <EditText
         android:id="@+id/etUsername"
         android:layout_width="0dp"
@@ -30,6 +40,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
+    <!-- Campo para ingresar la contraseña -->
     <EditText
         android:id="@+id/etPassword"
         android:layout_width="0dp"
@@ -41,6 +52,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
+    <!-- Botón que ejecuta el proceso de registro -->
     <Button
         android:id="@+id/btnRegister"
         android:layout_width="wrap_content"

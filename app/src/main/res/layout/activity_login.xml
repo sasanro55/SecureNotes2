@@ -1,4 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!--
+    Pantalla inicial de la aplicación.
+    Permite autenticar usuarios mediante nombre de usuario y contraseña.
+    El acceso a la aplicación solo es permitido después de una validación correcta.
+-->
+
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -7,6 +14,7 @@
     android:layout_height="match_parent"
     tools:context=".LoginActivity">
 
+    <!-- Título principal de la aplicación -->
     <TextView
         android:id="@+id/tvTitle"
         android:layout_width="wrap_content"
@@ -19,6 +27,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="40dp"/>
 
+    <!-- Campo para ingresar el nombre de usuario -->
     <EditText
         android:id="@+id/etUsername"
         android:layout_width="0dp"
@@ -29,6 +38,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
+    <!-- Campo protegido para ingresar la contraseña -->
+    <!-- El atributo textPassword evita mostrar el texto ingresado -->
     <EditText
         android:id="@+id/etPassword"
         android:layout_width="0dp"
@@ -40,6 +51,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
+    <!-- Ejecuta la validación de credenciales del usuario -->
     <Button
         android:id="@+id/btnLogin"
         android:layout_width="wrap_content"
@@ -49,6 +61,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
+    <!-- Permite acceder al formulario de creación de usuarios -->
     <Button
         android:id="@+id/btnGoRegister"
         android:layout_width="wrap_content"
