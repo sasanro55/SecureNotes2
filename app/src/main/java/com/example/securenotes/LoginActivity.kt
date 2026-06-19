@@ -11,6 +11,22 @@ class LoginActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        // Verifica si ya existe una sesión activa.
+        // Si el usuario ya inició sesión previamente,
+        // se redirige directamente a MainActivity.
+        val securePrefs = SecurePreferencesManager(this)
+
+        if (securePrefs.isLoggedIn()) {
+
+            startActivity(
+                Intent(this, MainActivity::class.java)
+            )
+
+            finish()
+            return
+        }
+
         setContentView(R.layout.activity_login)
 
         // Referencias a los componentes de la interfaz
@@ -46,10 +62,6 @@ class LoginActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            // Accede a las credenciales almacenadas de forma segura
-            val securePrefs =
-                SecurePreferencesManager(this)
-
             // Recupera el usuario almacenado
             val storedUsername =
                 securePrefs.getUsername()
@@ -59,11 +71,10 @@ class LoginActivity : AppCompatActivity() {
                 securePrefs.getPasswordHash()
 
             // Genera el hash SHA-256 de la contraseña ingresada
-            // para compararlo con el hash almacenado
             val inputPasswordHash =
                 SecurityUtils.hashPassword(password)
 
-            // Verifica que el usuario y el hash de la contraseña coincidan
+            // Verifica que el usuario y el hash coincidan
             if (
                 username == storedUsername &&
                 inputPasswordHash == storedPasswordHash
@@ -83,10 +94,10 @@ class LoginActivity : AppCompatActivity() {
                     Intent(this, MainActivity::class.java)
                 )
 
+                finish()
+
             } else {
 
-                // Bloquea el acceso cuando las credenciales
-                // son incorrectas
                 Toast.makeText(
                     this,
                     "Usuario o contraseña incorrectos",
